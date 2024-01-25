@@ -1,0 +1,45 @@
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdownContent {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0; /* Aligns the dropdown content to the right */
+    background-color: #262626;
+    min-width: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-top: 10%;
+    text-align: center;
+    border: 2px solid gray;
+    border-radius: 15px;
+    
+}
+
+.dropdownContent button p {
+    white-space: nowrap; /* Prevents the text from wrapping to the next line */
+    overflow: hidden; /* Hides the overflowing text */
+    text-overflow: ellipsis; /* Shows an ellipsis when the text overflows */
+}
+
+.dropdownContent button {
+    padding: 10px 20px;
+    border-radius: 0;
+    border-bottom: gray 2px solid;
+}
+
+.dropdownContent button:last-child
+{
+    border-bottom: none;
+}
+
+@media only screen and (max-width: 640px)
+{
+    .dropdownContent{
+        left: 0;
+        right: auto;
+    }
+}

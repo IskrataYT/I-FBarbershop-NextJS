@@ -1,14 +1,21 @@
 // Logo.js
 import Image from 'next/image';
 
-const Logo = () => {
-  return (
-      <Image
-        src="/logo.svg" // Path to your logo image in the public directory
-        alt="Logo"
-        width={70} // Adjust as needed
-        height={70} // Adjust as needed
-      />
+const Logo = ({ isMobile }) => {
+  return isMobile ? (
+    <Image
+      src="/logo.svg" // Path to your logo image in the public directory
+      alt="Logo"
+      width={50} // Mobile size
+      height={50} // Mobile size
+    />
+  ) : (
+    <Image
+      src="/logo.svg" // Path to your logo image in the public directory
+      alt="Logo"
+      width={70} // Desktop size
+      height={70} // Desktop size
+    />
   );
 };
 
