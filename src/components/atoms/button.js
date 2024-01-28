@@ -1,11 +1,11 @@
 // Button.js
-import React, { Children } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import styles from './css/Button.module.css';
 import Link from 'next/link';
 import Text from './text';
 
-const Button = ({ children, primary, onClick, to, padding, margin }) => {
+const Button = ({ children, primary, onClick, to, padding, margin, navbar }) => {
   const buttonClass = classNames({
     [styles.button]: true,
     [styles.primary]: primary,
@@ -17,7 +17,7 @@ const Button = ({ children, primary, onClick, to, padding, margin }) => {
       onClick={onClick} 
       style={{ padding: padding, margin: margin }}
     >
-      <Text>{children}</Text>
+      <Text isNavbar={navbar}>{children}</Text> {/* Pass navbar prop to Text */}
     </button>
   );
 
@@ -25,4 +25,5 @@ const Button = ({ children, primary, onClick, to, padding, margin }) => {
 };
 
 export default Button;
+
 

@@ -1,0 +1,53 @@
+    .background{
+        position: relative;
+        text-align: center;
+        color: rgb(255, 255, 255);
+        box-sizing: border-box;
+    }
+
+    .TextOver{
+        position: absolute;
+        left: 0;
+        background: rgba(0, 0, 0, 0.9);
+        height: 100%;
+        width: 35%;
+        padding: 0 5% 0 5%;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        }
+
+        .TextOver:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 100%;
+          width: 65%;
+          height: 100%;
+          background: linear-gradient(
+          to right,
+        rgba(0, 0, 0, 0.9),
+        rgba(0, 0, 0, 0)
+      );}
+
+        @media (max-width: 768px) {
+          .TextOver:before{
+            display: none;
+          }
+        }
+      
+      @media (max-width: 768px) {
+        .TextOver{
+          width: 100%;
+          padding: 0 0 0 0;
+          background: rgba(0, 0, 0, 0.8);
+        }
+
+      }
+
+      .vid{
+        display: block;
+        width: 100%;
+      }

@@ -9,13 +9,13 @@
     position: absolute;
     right: 0; /* Aligns the dropdown content to the right */
     background-color: #262626;
-    min-width: auto;
+    min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     margin-top: 10%;
     text-align: center;
-    border: 2px solid gray;
-    border-radius: 15px;
+    border: 1px solid gray;
+    border-radius: 5px;
     
 }
 
@@ -28,7 +28,7 @@
 .dropdownContent button {
     padding: 10px 20px;
     border-radius: 0;
-    border-bottom: gray 2px solid;
+    border-bottom: gray 1px solid;
 }
 
 .dropdownContent button:last-child

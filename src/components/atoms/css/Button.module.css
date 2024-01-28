@@ -1,13 +1,13 @@
 /* Button.module.css */
 .button {
     border: none;
-    border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
     color: white;
     background: none;
     transition: .2s;
     font-size: 22px;
+    width: fit-content;
   }
 
 
@@ -18,7 +18,18 @@
   }
   
   .primary {
-    background-color: #0070f3;
-    color: white;
+    background-color: #d8cd90;
+    color: black !important;
+    border-radius: 25px;
+    padding: 10px 20px;
+    transition: .2s;
+  }
+
+  .primary:hover{
+    background-color: rgb(230, 212, 115);
+  }
+
+  .primary:hover p{
+    color: black !important;
   }
   
