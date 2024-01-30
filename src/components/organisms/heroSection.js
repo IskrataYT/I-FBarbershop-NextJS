@@ -59,7 +59,7 @@ const HeroSection = () => {
       Your browser does not support the video tag.
           </video>
           <div className={styles.TextOver}>
-            <Image src="/logo.svg" height={100} width={100} alt="fbaf"/>
+            <Image src="/logo.svg" height={200} width={200} alt="fbaf" className={styles.logo}/>
             <Title ref={el} key={isMobile}>
             </Title>
             <Text>
@@ -75,9 +75,9 @@ const HeroSection = () => {
         <div className={styles.background}>
           <img src="/Background-Long.jpg" width="100%" alt='yes' />
           <div className={styles.TextOver}>
-            <Title margin="8% 0 8% 0" ref={el}>
+            <Title margin="8% 0 8% 0" ref={el} padding="0 5% 0 5%">
             </Title>
-            <Text padding="5%" key={isMobile}>
+            <Text padding="0 5% 0 5%" key={isMobile}>
               Experience the fusion of tradition and innovation at our barbershop. Where every snip is a step towards perfection, and your style is our masterpiece.
             </Text>
             <Button to="/book-an-appointment" primary margin="15% 0 0 0">

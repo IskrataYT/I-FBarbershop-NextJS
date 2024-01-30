@@ -17,35 +17,67 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        }
-
-        .TextOver:before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 100%;
-          width: 65%;
-          height: 100%;
-          background: linear-gradient(
+      }
+      
+      .TextOver:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 100%;
+        width: 65%;
+        height: 100%;
+        background: linear-gradient(
           to right,
-        rgba(0, 0, 0, 0.9),
-        rgba(0, 0, 0, 0)
-      );}
+          rgba(0, 0, 0, 0.9),
+          rgba(0, 0, 0, 0)
+          );}
 
-        @media (max-width: 768px) {
+          @media only screen and (max-width: 1536px) {
+            .background .logo{
+              width: 150px;
+              height: 150px;
+            }
+          }
+          
+          @media only screen and (max-width: 1024px) {
+            .TextOver{
+              width: 60%;
+             }
+             .TextOver::before{
+              width: 40%;
+            }
+            .background .logo{
+              width: 100px;
+              height: 100px;
+            }
+            .TextOver button{
+              margin: 15% 0 0 0 !important;
+            }
+    
+            .TextOver h1{
+              margin: 3% 0 5% 0;
+            }
+          }
+          
+        @media only screen and (max-width: 768px) {
           .TextOver:before{
             display: none;
           }
         }
       
-      @media (max-width: 768px) {
+      
+      @media only screen and (max-width: 768px) {
         .TextOver{
           width: 100%;
           padding: 0 0 0 0;
           background: rgba(0, 0, 0, 0.8);
         }
 
+        .TextOver button{
+          margin: 40% 0 0 0 !important;
+        }
       }
+
 
       .vid{
         display: block;
