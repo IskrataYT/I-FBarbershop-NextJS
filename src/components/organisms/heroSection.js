@@ -60,7 +60,7 @@ const HeroSection = () => {
           </video>
           <div className={styles.TextOver}>
             <Image src="/logo.svg" height={200} width={200} alt="fbaf" className={styles.logo}/>
-            <Title ref={el} key={isMobile}>
+            <Title ref={el} key={isMobile} margin="8% 0 8% 0">
             </Title>
             <Text>
               Experience the fusion of tradition and innovation at our barbershop. Where every snip is a step towards perfection, and your style is our masterpiece.

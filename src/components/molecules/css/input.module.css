@@ -1,0 +1,53 @@
+/* Text.module.css */
+.input {
+    font-size: 22px;
+    font-weight: 300;
+    font-family: 'Outfit', sans-serif;
+    padding: 10px 20px;
+    background-color: transparent;
+    border: none;
+    border-bottom: gray 2px solid;
+    color: white;
+  }
+
+ .input:focus{
+    outline: none;
+}
+
+  @media only screen and (max-width: 1536px) {
+
+    .input{
+      font-size: 22px !important;
+    }
+  }
+
+  @media only screen and (max-width: 1280px) {
+    .input{
+      font-size: 20px !important;
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+
+    .input{
+      font-size: 18px !important;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .input{
+      font-size: 17px !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .input{
+      font-size: 18px !important;
+    }
+  }
+
+  @media (max-width: 475px) {
+    .input{
+      font-size: 18px !important;
+    }
+  }

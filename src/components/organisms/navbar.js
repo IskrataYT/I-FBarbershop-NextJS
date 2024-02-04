@@ -34,7 +34,7 @@ const Navbar = () => {
   const setDefaultDropdownContent = () => {
     setDropdownContent(
       <>
-      <Button>Account System</Button>
+      <Button>Account Settings</Button>
       <Button onClick={changeDropdownContentThemes} navbar={true}>Theme <FaArrowRight /></Button>
       <Button onClick={changeDropdownContentLanguages} navbar={true}>Language <FaArrowRight /></Button>
     </>
@@ -43,7 +43,7 @@ const Navbar = () => {
 
   const [dropdownContent, setDropdownContent] = useState(
     <>
-    <Button>Account System</Button>
+    <Button to="/sign-in">Account Settings</Button>
     <Button onClick={changeDropdownContentThemes} navbar={true}>Theme <FaArrowRight /></Button>
     <Button onClick={changeDropdownContentLanguages} navbar={true}>Language <FaArrowRight /></Button>
   </>
