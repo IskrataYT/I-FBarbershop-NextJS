@@ -13,7 +13,8 @@ const SignUpForm = () => {
         <InputField type="text" placeholder="Phone Number" margin="0 0 10% 0"/>
         <InputField type="password" placeholder="Password" margin="0 0 10% 0"/>
         <InputField type="password" placeholder="Confirm Password" margin="0 0 10% 0"/>
-        <Button primary>Sign Up</Button>
+        <Button secondary to="/sign-in">Already have an account? Click here to sign in.</Button>
+        <Button primary margin="5% 0 0 0">Sign Up</Button>
       </div>
     </div>
   )

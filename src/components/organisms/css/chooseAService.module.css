@@ -1,15 +1,4 @@
-.formContainer{
-    width: fit-content;
-    background-color: #262526;
-    border-radius: 10px;
-    border: 2px solid #d8cd90;
-    display: flex;
-    flex-direction: column;
-    padding: 3% 2%;
-    align-items: center;
-}
-
-.formBody{
+.servicesBody{
     padding: 5% 0 5% 0;
     width: 100%;
     display: flex;
@@ -17,9 +6,10 @@
     height: 90%;
     align-items: center;
     position: relative;
+    flex-direction: column;
 }
 
-  .formBody::before {
+  .servicesBody::before {
     content: "";
     position: absolute;
     top: 0;
@@ -33,8 +23,15 @@
   }
 
   @media only screen and (max-width: 640px) {
-    .formBody::before {
+    .servicesBody::before {
         background-image: url('/Background-Long.jpg');
       }
+  }
+
+  .container{
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
   

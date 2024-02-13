@@ -88,7 +88,7 @@ const Navbar = () => {
         </div>
           {isOpen && (
             <div className={styles.navbarElement}>
-              <Button to="/home">Home</Button>
+              <Button to="/home" navbar={true}>Home</Button>
               <Button to="/about" navbar={true}>About</Button>
               <Button to="/catalogue" navbar={true}>Catalogue</Button>
               <Button to="/book-an-appointment" navbar={true}>Booking</Button>

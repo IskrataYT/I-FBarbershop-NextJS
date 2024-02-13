@@ -6,10 +6,21 @@
     color: white;
     background: none;
     transition: .2s;
-    font-size: 22px;
     width: fit-content;
   }
 
+.secondary{
+  color: rgb(152, 152, 152);
+}
+
+.secondary:hover p{
+  color: rgb(199, 199, 199) !important;
+  transition: .2s;
+}
+
+.secondary p{
+  transition: .2s;
+}
 
 
   .button:hover p{

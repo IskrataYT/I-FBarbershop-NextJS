@@ -5,10 +5,11 @@ import styles from './css/Button.module.css';
 import Link from 'next/link';
 import Text from './text';
 
-const Button = ({ children, primary, onClick, to, padding, margin, navbar }) => {
+const Button = ({ children, primary, onClick, to, padding, margin, navbar, secondary }) => {
   const buttonClass = classNames({
     [styles.button]: true,
     [styles.primary]: primary,
+    [styles.secondary]: secondary,
   });
 
   const renderButton = () => (
@@ -17,7 +18,7 @@ const Button = ({ children, primary, onClick, to, padding, margin, navbar }) => 
       onClick={onClick} 
       style={{ padding: padding, margin: margin }}
     >
-      <Text isNavbar={navbar}>{children}</Text> {/* Pass navbar prop to Text */}
+      <Text isNavbar={navbar} isSecondary={secondary}>{children}</Text> {/* Pass navbar prop to Text */}
     </button>
   );
 

@@ -5,6 +5,7 @@
     padding: 1%;
     flex-direction: column;
     align-items: center;
+    max-width: 100%;
 }
 
 .footerIcons {
