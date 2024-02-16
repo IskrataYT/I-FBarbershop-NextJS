@@ -1,14 +1,12 @@
-import styles from "./css/carousel.module.css";
-import Text from "../atoms/text";
-import Button from "../atoms/button";
+import styles from "./css/carousel.module.css"
 
 const Carousel = () => {
 
-    return(
-        <div className={styles.CarouselContainer}>
+  return(
+    <div className={styles.CarouselContainer}>
             
-        </div>
-    )
+    </div>
+  )
 }
 
-export default Carousel; 
+export default Carousel 

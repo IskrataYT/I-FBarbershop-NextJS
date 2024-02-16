@@ -9,7 +9,7 @@
   }
   
   .secondary {
-    font-size: 40px;
+    font-size: 38px;
     text-align: center;
     font-family: 'EB Garamond', serif;
     font-weight: 800;
@@ -22,7 +22,7 @@
     }
 
     .secondary{
-        font-size: 38px;
+        font-size: 36px;
     }
   }
 
@@ -32,7 +32,7 @@
     }
 
     .secondary{
-        font-size: 36px;
+        font-size: 34px;
     }
   }
 
@@ -42,7 +42,7 @@
     }
 
     .secondary{
-        font-size: 36px;
+        font-size: 30px;
     }
   }
 
@@ -52,7 +52,7 @@
     }
 
     .secondary{
-        font-size: 34px;
+        font-size: 26px;
     }
   }
 
@@ -62,7 +62,7 @@
     }
 
     .secondary{
-        font-size: 28px;
+        font-size: 20px;
     }
   }
   @media (max-width: 475px) {
@@ -71,7 +71,7 @@
     }
 
     .secondary{
-        font-size: 26px;
+        font-size: 18px;
     }
   }
   

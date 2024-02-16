@@ -1,5 +1,5 @@
 // Logo.js
-import Image from 'next/image';
+import Image from "next/image"
 
 const Logo = ({ isMobile }) => {
   return isMobile ? (
@@ -16,7 +16,7 @@ const Logo = ({ isMobile }) => {
       width={70} // Desktop size
       height={70} // Desktop size
     />
-  );
-};
+  )
+}
 
-export default Logo;
+export default Logo

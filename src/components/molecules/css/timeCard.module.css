@@ -1,0 +1,17 @@
+.container
+{
+    width: 100%;
+    border-radius: 10px;
+    background-color: #262626;
+    transition: .2s;
+    border: 1px solid gray;
+    color: white;
+    padding: 2% 0 2% 0;
+}
+
+.container:hover{
+    cursor: pointer;
+    border: 1px solid #d8cd90;
+    transition: .2s;
+}
+

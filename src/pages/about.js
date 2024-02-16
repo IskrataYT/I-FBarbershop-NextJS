@@ -1,12 +1,14 @@
-import Text from "@/components/atoms/text";
-import Navbar from "@/components/organisms/navbar";
+import Navbar from "@/components/organisms/navbar"
+import Footer from "@/components/organisms/footer"
+import AboutPage from "@/components/organisms/about"
+
 
 export default function About() {
-    return(
-        <div className="aboutpage">
-            <Navbar/>
-            <h1>This is the about page</h1>
-            <Text>Hellow WOrd</Text>
-        </div>
-    )
+  return(
+    <div className="AboutPage" style={{ display: "flex", flexDirection: "column" , minHeight: "100vh",}}>
+      <Navbar/>
+      <AboutPage/>
+      <Footer/>
+    </div>
+  )
 }

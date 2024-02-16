@@ -1,53 +1,53 @@
-import React, { useEffect, useState, useRef } from "react";
-import Text from "../atoms/text";
-import Title from "../atoms/title";
-import Button from "../atoms/button";
-import Image from "next/image";
-import styles from "./css/heroSection.module.css";
-import Typed from "typed.js";
+import React, { useEffect, useState, useRef } from "react"
+import Text from "../atoms/text"
+import Title from "../atoms/title"
+import Button from "../atoms/button"
+import Image from "next/image"
+import styles from "./css/heroSection.module.css"
+import Typed from "typed.js"
 
 const HeroSection = () => {
-    const [isMobile, setIsMobile] = useState(false);
-    const el = useRef(null);
+  const [isMobile, setIsMobile] = useState(false)
+  const el = useRef(null)
 
-    useEffect(() => {
-      if (el && el.current) { // Check that the ref is not null
-        const typed = new Typed(el.current, {
-          strings: [
-            "Cutting Edge Style, Classic Comfort",
-            "Experience the fusion of tradition and innovation",
-            "Your style is our masterpiece",
-          ],
-          startDelay: 300,
-          typeSpeed: 75,
-          backDelay: 3000,
-          backSpeed: 50,
-          loop: true,
-          showCursor: false,
-        });
+  useEffect(() => {
+    if (el && el.current) { // Check that the ref is not null
+      const typed = new Typed(el.current, {
+        strings: [
+          "Cutting Edge Style, Classic Comfort",
+          "Experience the fusion of tradition and innovation",
+          "Your style is our masterpiece",
+        ],
+        startDelay: 300,
+        typeSpeed: 75,
+        backDelay: 3000,
+        backSpeed: 50,
+        loop: true,
+        showCursor: false,
+      })
     
-        // Destroy Typed instance on unmounting 
-        // to prevent memory leaks
-        return () => {
-          typed.destroy();
-        };
-      }
-    }, [isMobile]); // Empty dependency array ensures the effect runs after the component mounts
-    
-
-    useEffect(() => {
-      const handleResize = () => {
-        setIsMobile(window.innerWidth <= 640);
-      };
-    
-      handleResize(); // Call the function once to set the initial state
-    
-      window.addEventListener("resize", handleResize);
-    
+      // Destroy Typed instance on unmounting 
+      // to prevent memory leaks
       return () => {
-        window.removeEventListener("resize", handleResize);
-      };
-    }, []);
+        typed.destroy()
+      }
+    }
+  }, [isMobile]) // Empty dependency array ensures the effect runs after the component mounts
+    
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 640)
+    }
+    
+    handleResize() // Call the function once to set the initial state
+    
+    window.addEventListener("resize", handleResize)
+    
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [])
     
 
   return (
@@ -87,7 +87,7 @@ const HeroSection = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default HeroSection;
+export default HeroSection
