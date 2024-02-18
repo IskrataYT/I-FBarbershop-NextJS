@@ -1,17 +1,24 @@
-import { withIronSession } from "next-iron-session"
+import jwt from "jsonwebtoken"
 
-export default withIronSession(async (req, res) => {
-  const user = req.session.get("user")
+export default async (req, res) => {
+  // Get the token from the Authorization header
+  const token = req.headers.authorization?.split(" ")[1]
 
-  if (user) {
-    // If the user session exists, send a success response
-    res.status(200).json({ loggedIn: true, username: user.username, phonenumber: user.phonenumber })
+  if (token) {
+    try {
+      // Verify the token
+      const secretKey = "your-secret-key" // Replace with your actual secret key
+      const user = jwt.verify(token, secretKey)
+
+      // If the token is valid, send a success response
+      res.status(200).json({ loggedIn: true, username: user.username, phonenumber: user.phonenumber })
+    } catch (err) {
+      // If the token is not valid, send an error response
+      res.status(401).json({ loggedIn: false, message: "Invalid token" })
+    }
   } else {
-    // If the user session does not exist, send an error response
-    res.status(200).json({ loggedIn: false })
+    // If the token does not exist, send an error response
+    res.status(401).json({ loggedIn: false, message: "No token provided" })
   }
-}, {
-  password: "H?FCM$$45A4YmhqhPhj9y#j6p$K?G9$CikTbt34Y",
-  cookieName: "my-session",
-})
+}
 

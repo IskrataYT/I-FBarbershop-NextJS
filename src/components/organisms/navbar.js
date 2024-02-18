@@ -35,6 +35,22 @@ const Navbar = () => {
     "theme",
     "language",
   ])
+  const [userSignedIn, setUserSignedIn] = useState(false)
+
+  useEffect(() => {
+    // This runs when the component mounts and updates `isMobile`
+    // ... existing code ...
+    const token = localStorage.getItem("token")
+    // Fetch the user's logged-in status
+    fetch("/api/user", {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
+      .then(response => response.json())
+      .then(data => setUserSignedIn(data.loggedIn))
+      .catch(error => console.error("Error:", error))
+  }, [])
 
   useEffect(() => {
     // This runs when the component mounts and updates `isMobile`
@@ -67,7 +83,7 @@ const Navbar = () => {
             <Dropdown clickable title={<FaUser />}>
               {renderedKeys.map((key) =>
                 getComponentByKey(key, () =>
-                  setRenderedKeys(getRenderedKeysByComponent(key))
+                  setRenderedKeys(getRenderedKeysByComponent(key)), userSignedIn
                 )
               )}
             </Dropdown>
@@ -85,7 +101,7 @@ const Navbar = () => {
             <Dropdown clickable title={<FaUser />}>
               {renderedKeys.map((key) =>
                 getComponentByKey(key, () =>
-                  setRenderedKeys(getRenderedKeysByComponent(key))
+                  setRenderedKeys(getRenderedKeysByComponent(key)), userSignedIn
                 )
               )}
             </Dropdown>

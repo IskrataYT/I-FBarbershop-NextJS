@@ -32,7 +32,7 @@ const Contact = () => {
         <Text>IandF.barbershop@gmail.com</Text>
         <Text>St. &quot;Moskva&quot; 43</Text> 
       </div>
-      {!isMobile && <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d623.4153833118237!2d27.257241440911994!3d44.11824472897071!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sbg!2sbg!4v1708031311874!5m2!1sbg!2sbg" width="500vh" height="350vh" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>}
+      {!isMobile && <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1009.6599002808676!2d27.257049522636525!3d44.11816241491591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sbg!4v1708183008222!5m2!1sen!2sbg" width="500vh" height="350vh" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>}
     </div>
   )
 }

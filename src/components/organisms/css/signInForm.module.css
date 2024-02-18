@@ -9,23 +9,29 @@
     align-items: center;
 }
 
-.formContainer > p{
+.message{
   color: white;
   animation-name: fadeOut;
   animation-duration: 3s;
   animation-fill-mode: forwards;
   animation-delay: 2s;
   animation-timing-function: ease-in;
+  margin: 0 0 10% 0 !important;
 }
+
+.errorText{
+  color: red !important;
+  animation: none !important;
+  margin: 5% 0 10% 0 !important;
+}
+
 
 @keyframes fadeOut {
   from {
     opacity: 1;
-    margin: 0 0 10% 0 !important;
   }
   to {
     opacity: 0;
-    margin: 0 !important;
   }
 }
 
@@ -59,4 +65,51 @@
         background-image: url('/Background-Long.jpg');
       }
   }
+
+  /* Text.module.css */
+.message, .errorText {
+  font-size: 18px;
+  font-weight: 300;
+  font-family: 'Outfit', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+
+@media only screen and (max-width: 1536px) {
+  .message, .errorText{
+    font-size: 16px !important;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .message, .errorText{
+    font-size: 16px !important;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .message, .errorText{
+    font-size: 16px !important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .message, .errorText{
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .message, .errorText{
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 475px) {
+  .message, .errorText{
+    font-size: 14px !important;
+  }
+}
+
   

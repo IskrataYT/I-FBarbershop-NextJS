@@ -1,33 +1,19 @@
-// ChooseADateAndTime.js
-
 import React, { useState, useEffect } from "react"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import TimeCard from "../molecules/timeCard"
 import Title from "../atoms/title"
 import styles from "./css/dateAndTime.module.css"
+import Text from "../atoms/text"
+import { FaArrowLeft } from "react-icons/fa6"
+import Button from "../atoms/button"
 
-const ChooseADateAndTime = ({ nextStep }) => {
+const ChooseADateAndTime = ({ nextStep, previousStep }) => {
   const [startDate, setStartDate] = useState(new Date())
-  const [bookedTimes, setBookedTimes] = useState([])
+  const [times, setTimes] = useState([])
+  const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    // Fetch booked times from the server
-    fetchBookedTimes()
-  }, [])
-
-  const fetchBookedTimes = async () => {
-    try {
-      const response = await fetch("/api/bookedTimes") // Use Next.js API route
-      const data = await response.json()
-      console.log("Fetched booked times:", data.bookedTimes)
-      setBookedTimes(data.bookedTimes)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-  const times = [
+  const defaultTimes = [
     { time: "9:00" },
     { time: "10:00" },
     { time: "11:00" },
@@ -37,11 +23,43 @@ const ChooseADateAndTime = ({ nextStep }) => {
     { time: "15:00" },
     { time: "16:00" },
     // Add more services here...
-  ].filter(time => !bookedTimes.map(bookedTime => bookedTime.toLowerCase()).includes(time.time.toLowerCase()))
+  ]
 
-  const handleDateChange = (date) => {
-    setStartDate(date)
+  const fetchBookings = async (date) => {
+    try {
+      const response = await fetch("/api/fetchBooking", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ date: date.toLocaleDateString("en-GB") }),
+      })
+
+      const data = await response.json()
+
+      // Update the state based on the previous state
+      setTimes(() =>
+        defaultTimes.filter((time) => !data.times.includes(time.time))
+      )
+
+      // Fetching is successful, set loading to false
+      setLoading(false)
+    } catch (error) {
+      console.error("Error fetching bookings:", error)
+      setLoading(false) // Set loading to false in case of an error
+    }
   }
+
+  const handleDateChange = async (date) => {
+    console.log("New date:", date)
+    setStartDate(date)
+    setLoading(true) // Set loading to true when changing the date
+  }
+
+  useEffect(() => {
+    // Fetch bookings for the current date when the component mounts
+    fetchBookings(startDate)
+  }, [startDate]) // Trigger useEffect when startDate changes
 
   const handleTimeSelection = (time) => {
     const formattedDate = startDate.toLocaleDateString("en-GB")
@@ -51,20 +69,32 @@ const ChooseADateAndTime = ({ nextStep }) => {
   return (
     <div className={styles.body}>
       <div className={styles.container}>
+        <Button onClick={previousStep}><FaArrowLeft /></Button>
         <div className={styles.component}>
           <Title margin="0 0 8% 0">Choose a Date:</Title>
           <DatePicker
             selected={startDate}
-            onChange={handleDateChange}
+            onChange={(date) => {
+              handleDateChange(date)
+              fetchBookings(date)
+            }}
             inline // Show only the calendar
             minDate={new Date()} // Disable past dates
           />
         </div>
         <div className={styles.component}>
           <Title margin="0 0 8% 0">Choose a time:</Title>
-          {times.map((time, index) => (
-            <TimeCard key={index} time={time} onSelect={handleTimeSelection} />
-          ))}
+          {loading ? (
+            <Text>Loading..</Text>
+          ) : (
+            times.map((time, index) => (
+              <TimeCard
+                key={index}
+                time={time}
+                onSelect={handleTimeSelection}
+              />
+            ))
+          )}
         </div>
       </div>
     </div>
@@ -72,3 +102,9 @@ const ChooseADateAndTime = ({ nextStep }) => {
 }
 
 export default ChooseADateAndTime
+
+
+
+
+
+

@@ -3,7 +3,6 @@ import InputField from "../molecules/input"
 import styles from "./css/signInForm.module.css"
 import Button from "../atoms/button"
 import { useRouter } from "next/router"
-import Text from "../atoms/text"
 import { useEffect, useState } from "react"
 
 const SignInForm = () => {
@@ -12,6 +11,8 @@ const SignInForm = () => {
   const { redirected } = router.query
   const [phone, setPhone] = useState("")
   const [password, setPassword] = useState("")
+  const [phoneText, setPhoneText] = useState("")
+  const [passwordText, setPasswordText] = useState("")
 
   const validatePhoneNumber = (phone) => {
     const re = /^\d{10}$/
@@ -20,17 +21,22 @@ const SignInForm = () => {
 
 
   const handleSignIn = async () => {
-
-    if (!phone || !password) {
-      console.log("Please fill out all fields")
-      return
+    if (!phone) {
+      setPhoneText("Please fill out this field")
+      if(!password){
+        setPasswordText("Please fill out this field")
+      }
+    } else {
+      if(!password){
+        setPasswordText("Please fill out this field")
+      } 
     }
-
+  
     if (!validatePhoneNumber(phone)) {
-      console.log("Invalid phone number")
+      setPhoneText("This is not a phone number")
       return
     }
-
+  
     const response = await fetch("/api/login", {
       method: "POST",
       headers: {
@@ -42,13 +48,28 @@ const SignInForm = () => {
       })
     })
   
+    const data = await response.json()
+  
     if (response.ok) {
-      router.push("/home")
+      // Save the token in localStorage
+      localStorage.setItem("token", data.token)
+      if(redirected){
+        router.push("/book-an-appointment")
+      }
+      else{
+        router.push("/home")
+      }
     } else {
-      console.log("Login failed")
+      if(data.message == "Invalid Phone number"){
+        setPhoneText("Incorrect Phone Number")
+      } else {
+        if(data.message == "Invalid password") {
+          setPasswordText("Incorrect Password")
+        }
+      }
     }
   }
-
+  
 
   const [showText, setShowText] = useState(true)
   
@@ -65,17 +86,21 @@ const SignInForm = () => {
     <div className={styles.formBody}>
       {redirected ? (<div className={styles.formContainer}>
         <Title margin="0 0 15% 0">Sign In</Title>
-        {showText && <Text margin="0 0 10% 0">Please Sign In First</Text>}
-        <InputField type="text" placeholder="Phone Number" margin="0 0 10% 0"value={phone} onChange={e => setPhone(e.target.value)}/>
-        <InputField type="password" placeholder="Password" margin="0 0 10% 0" value={password} onChange={e => setPassword(e.target.value)}/>
+        {showText && <p className={styles.message}>Please sign in first</p>}
+        <InputField type="text" placeholder="Phone Number" value={phone} onChange={e => setPhone(e.target.value)}/>
+        <p className={styles.errorText}>{phoneText}</p>
+        <InputField type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}/>
+        <p className={styles.errorText}>{passwordText}</p>
         <Button secondary  to="sign-up">Don’t have an account? Click here to sign up.</Button>
         <Button primary margin="5% 0 0 0" onClick={handleSignIn}>Sign In</Button>
       </div>) : (<div className={styles.formContainer}>
         <Title margin="0 0 15% 0">Sign In</Title>
-        <InputField type="text" placeholder="Phone Number" margin="0 0 10% 0" value={phone} onChange={e => setPhone(e.target.value)}/>
-        <InputField type="password" placeholder="Password" margin="0 0 10% 0" value={password} onChange={e => setPassword(e.target.value)}/>
+        <InputField type="text" placeholder="Phone Number" value={phone} onChange={e => setPhone(e.target.value)}/>
+        <p className={styles.errorText}>{phoneText}</p>
+        <InputField type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}/>
+        <p className={styles.errorText}>{passwordText}</p>
         <Button secondary  to="sign-up">Don’t have an account? Click here to sign up.</Button>
-        <Button primary margin="5% 0 0 0" onClick={handleSignIn}>Sign In</Button>
+        <Button primary margin="5% 0 0 0" onClick={handleSignIn} >Sign In</Button>
       </div>)}        
     </div>
   )

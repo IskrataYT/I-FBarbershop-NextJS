@@ -8,8 +8,8 @@ const Footer = () => {
   return(
     <div className={styles.footerContainer}>
       <div className={styles.footerIcons}>
-        <Button><FaInstagram/></Button>
-        <Button><FaFacebook/></Button>
+        <Button to="https://www.instagram.com/iskren_mink0v/"><FaInstagram/></Button>
+        <Button to="https://www.facebook.com/PmgSilistra"><FaFacebook/></Button>
       </div>
       <Text isSecondary>© I&F barbershop. All rights reserved.</Text>
     </div>

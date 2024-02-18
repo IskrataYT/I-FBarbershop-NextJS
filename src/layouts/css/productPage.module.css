@@ -1,0 +1,114 @@
+.textContainer p{
+    color: white;
+}
+
+
+.container{
+    display: flex;
+    flex-direction: row;
+    height: auto;
+}
+
+.textContainer{
+    width: 42%;
+    padding: 5% 4% 0 4%;
+}
+
+.textContainer h1{
+    margin-bottom: 5%;
+    text-align: left;
+}
+
+.quantity em{
+    color: #c5c5c5;
+    font-weight: 300;
+    font-family: 'Outfit', sans-serif;
+    font-size: 17px;
+    margin: 5% 0;
+}
+
+
+.productImg {
+    width: 100%;
+    border-radius: 4px;
+    object-fit: scale-down;
+    background-color: white;
+    height: 65vh;
+  }
+
+.imgContainer{
+    margin: 0 5%;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5% 0 5% 0;
+}
+
+.price {
+    font-size: 28px;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    margin: 4% 0 0 0;
+    color: #d8cd90 !important;
+  }
+
+
+  @media only screen and (max-width: 1536px) {
+    .price{
+      font-size: 26px !important;
+    }
+  }
+
+  @media only screen and (max-width: 1280px) {
+    .price{
+      font-size: 25px !important;
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .price{
+      font-size: 24px !important;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .price{
+      font-size: 24px !important;
+    }
+    .container{
+        flex-direction: column;
+    }
+    .imgContainer{
+        width: 90%;
+    }
+    .productImg{
+        height: 50vh;
+    }
+    .textContainer{
+        width: 80%;
+        padding: 0 10% 0 10%;
+    }
+    .textContainer p{
+        text-align: center;
+    }
+    .textContainer h1{
+        text-align: center;
+    }
+
+  }
+
+  @media (max-width: 640px) {
+    .price{
+      font-size: 22px !important;
+    }
+  }
+
+  @media (max-width: 475px) {
+    .price{
+      font-size: 22px !important;
+    }
+    .productImg{
+        height: 45vh;
+    }
+  }

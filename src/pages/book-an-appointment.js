@@ -4,6 +4,7 @@ import Navbar from "@/components/organisms/navbar"
 import Footer from "@/components/organisms/footer"
 import ChooseAService from "@/components/organisms/chooseAService"
 import ChooseADateAndTime from "@/components/organisms/chooseADate&Time"
+import SuccessScreen from "@/components/organisms/successScreen"
 
 const initialState = { step: 1, bookingDetails: {} }
 
@@ -11,25 +12,47 @@ function reducer(state, action) {
   switch (action.type) {
   case "nextStep":
     return { ...state, bookingDetails: { ...state.bookingDetails, ...action.details }, step: state.step + 1 }
+  case "previousStep":
+    return { ...state, step: state.step - 1 }
   case "reset":
     return initialState
+  case "success":
+    return {step: state.step + 1}
   default:
     throw new Error()
   }
 }
+
 
 export default function Booking() {
   const [state, dispatch] = useReducer(reducer, initialState)
   const [sessionExists, setSessionExists] = useState(false)
   const [userData, setUserData] = useState(null)
   const router = useRouter()
+  const [bookingDetails, setBookingDetails] = useState({})
 
   const nextStep = (details) => {
     dispatch({ type: "nextStep", details: details })
   }
 
+  const previousStep = () => {
+    dispatch({ type: "previousStep" })
+  } 
+
+  const successScreen = () =>{
+    dispatch({ type: "success" })
+  }
+  
+
   useEffect(() => {
-    fetch("/api/user")
+    // Get the token from localStorage or cookies
+    const token = localStorage.getItem("token") // Or get it from cookies
+  
+    fetch("/api/user", {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
       .then(res => res.json())
       .then(data => {
         setSessionExists(data.loggedIn)
@@ -39,6 +62,7 @@ export default function Booking() {
         }
       })
   }, [])
+  
 
   useEffect(() => {
     if (state.step === 3 && userData) {
@@ -58,8 +82,8 @@ export default function Booking() {
         .then(response => response.json())
         .then(data => {
           if (data.message === "Booking created successfully") {
-            alert("Booking successful!")
-            dispatch({ type: "reset" })
+            setBookingDetails(state.bookingDetails)
+            successScreen()
           } else {
             alert("Booking failed. Please try again.")
           }
@@ -67,7 +91,14 @@ export default function Booking() {
     }
   }, [state, userData])
 
-
+  const goHome = () => {
+    dispatch({type: "reset"})
+    router.push("/home")
+  }
+  const bookMore = () => {
+    dispatch({type: "reset"})
+    window.location.reload()
+  }
 
   return(
     <div className="BookingPage"  style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100vh"}}>
@@ -75,7 +106,8 @@ export default function Booking() {
       {sessionExists ? (
         <>
           {state.step === 1 && <ChooseAService nextStep={nextStep} />}
-          {state.step === 2 && <ChooseADateAndTime nextStep={nextStep} />}
+          {state.step === 2 && <ChooseADateAndTime nextStep={nextStep} previousStep={previousStep} />}
+          {state.step === 4 && <SuccessScreen details={bookingDetails} goHome={goHome} bookMore={bookMore}></SuccessScreen>}
         </>
       ) : null}
       <Footer/>
