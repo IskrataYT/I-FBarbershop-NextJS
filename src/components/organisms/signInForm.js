@@ -57,7 +57,7 @@ const SignInForm = () => {
         router.push("/book-an-appointment")
       }
       else{
-        router.push("/home")
+        router.push("/")
       }
     } else {
       if(data.message == "Invalid Phone number"){

@@ -93,7 +93,7 @@ export default function Booking() {
 
   const goHome = () => {
     dispatch({type: "reset"})
-    router.push("/home")
+    router.push("/")
   }
   const bookMore = () => {
     dispatch({type: "reset"})

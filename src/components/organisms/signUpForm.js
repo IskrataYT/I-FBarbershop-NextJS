@@ -77,7 +77,7 @@ const SignUpForm = () => {
     if (response.ok) {
       // Save the token in localStorage
       localStorage.setItem("token", data.token)
-      router.push("/home")
+      router.push("/")
     } else {
       console.log("Registration failed")
     }

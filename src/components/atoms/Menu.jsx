@@ -7,7 +7,7 @@ import Logo from "./logo"
 export const Menu = ({ isAddMargin, isMobile }) => {
   return (
     <div className={styles.navbarElement}>
-      <Button margin={isAddMargin ? "0 20px 0 0" : ""}  to="/home">
+      <Button margin={isAddMargin ? "0 20px 0 0" : ""}  to="/">
         Home
       </Button>
       <Button
