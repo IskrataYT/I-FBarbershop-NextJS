@@ -7,8 +7,10 @@ import styles from "./css/dateAndTime.module.css"
 import Text from "../atoms/text"
 import { FaArrowLeft } from "react-icons/fa6"
 import Button from "../atoms/button"
+import { useTranslation } from "next-i18next"
 
 const ChooseADateAndTime = ({ nextStep, previousStep }) => {
+  const { t } = useTranslation("common")
   const [startDate, setStartDate] = useState(new Date())
   const [times, setTimes] = useState([])
   const [loading, setLoading] = useState(true)
@@ -71,7 +73,7 @@ const ChooseADateAndTime = ({ nextStep, previousStep }) => {
       <div className={styles.container}>
         <Button onClick={previousStep}><FaArrowLeft /></Button>
         <div className={styles.component}>
-          <Title margin="0 0 8% 0">Choose a Date:</Title>
+          <Title margin="0 0 8% 0">{t("choose-date")}</Title>
           <DatePicker
             selected={startDate}
             onChange={(date) => {
@@ -83,9 +85,9 @@ const ChooseADateAndTime = ({ nextStep, previousStep }) => {
           />
         </div>
         <div className={styles.component}>
-          <Title margin="0 0 8% 0">Choose a time:</Title>
+          <Title margin="0 0 8% 0">{t("choose-time")}</Title>
           {loading ? (
-            <Text>Loading..</Text>
+            <Text>{t("loading")}</Text>
           ) : (
             times.map((time, index) => (
               <TimeCard

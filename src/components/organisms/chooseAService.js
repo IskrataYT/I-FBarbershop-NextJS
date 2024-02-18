@@ -1,48 +1,49 @@
 import styles from "./css/chooseAService.module.css"
 import Title from "../atoms/title"
 import ServiceCard from "../molecules/serviceCard"
+import { useTranslation } from "next-i18next"
 
 const ChooseAService = ({nextStep}) => {
-
+  const { t } = useTranslation("common")
 
   const services = [
     {
-      title: "Мъжко подстригване",
+      titleKey: "haircut",
       price: "20",
       duration: "60 mins",
     },
     {
-      title: "Оформяне на брада",
+      titleKey: "beardStyling",
       price: "15",
       duration: "30 mins",
     },
     {
-      title: "Детско подстригване (до 9г.)",
+      titleKey: "childHaircut",
       price: "15",  
       duration: "30 mins",
     },
     {
-      title: "Кралско бръснене",
+      titleKey: "royalShave",
       price: "20",
       duration: "30 mins",
     },
     {
-      title: "Коса и брада",
+      titleKey: "hairAndBeard",
       price: "35",
       duration: "60 mins",
     },
     {
-      title: "Камуфлаж на брада",
+      titleKey: "beardCamouflage",
       price: "20",
       duration: "30 mins",
     },
     {
-      title: "Коса и вежди",
+      titleKey: "hairAndBrows",
       price: "30",
       duration: "60 mins",
     },
     {
-      title: "Коса, брада и вежди",
+      titleKey: "hairBeardBrows",
       price: "45",
       duration: "90 mins",
     },
@@ -50,15 +51,15 @@ const ChooseAService = ({nextStep}) => {
   ]
 
   const handleServiceSelection = (service) => {
-    nextStep({ service: service.title })
+    nextStep({ service: service.titleKey })
   }
 
   return (
     <div className={styles.servicesBody}>
       <div className={styles.container}>
-        <Title margin="0 0 3% 0">Choose a service:</Title>
+        <Title margin="0 0 3% 0">{t("choose-service")}</Title>
         {services.map((service, index) => (
-          <ServiceCard key={index} service={service} onSelect={handleServiceSelection}/>
+          <ServiceCard key={index} service={{ ...service, title: t(`service.${service.titleKey}`) }} onSelect={handleServiceSelection}/>
         ))}
       </div>
     </div>

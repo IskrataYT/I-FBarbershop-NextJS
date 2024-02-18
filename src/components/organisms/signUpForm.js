@@ -4,6 +4,7 @@ import InputField from "../molecules/input"
 import styles from "./css/signInForm.module.css"
 import Button from "../atoms/button"
 import { useRouter } from "next/router"
+import { useTranslation } from "next-i18next"
 
 const SignUpForm = () => {
   const [name, setName] = useState("")
@@ -15,6 +16,8 @@ const SignUpForm = () => {
   const [phoneText, setPhoneText] = useState("")
   const [passwordText, setPasswordText] = useState("")
   const [confirmPasswordText, setConfirmPasswordText] = useState("")
+
+  const { t } = useTranslation("common")
 
   const validatePhoneNumber = (phone) => {
     const re = /^\d{10}$/
@@ -86,7 +89,7 @@ const SignUpForm = () => {
   return(
     <div className={styles.formBody}>
       <div className={styles.formContainer}>
-        <Title margin="0 0 15% 0">Sign Up</Title>
+        <Title margin="0 0 15% 0">{t("sign-up")}</Title>
         <InputField type="names" placeholder="Name" margin="0 0 10% 0" value={name} onChange={e => setName(e.target.value)}/>
         <p className={styles.errorText}>{nameText}</p>
         <InputField type="text" placeholder="Phone Number" margin="0 0 10% 0" value={phone} onChange={e => setPhone(e.target.value)}/>
@@ -95,8 +98,8 @@ const SignUpForm = () => {
         <p className={styles.errorText}>{passwordText}</p>
         <InputField type="password" placeholder="Confirm Password" margin="0 0 10% 0" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}/>
         <p className={styles.errorText}>{confirmPasswordText}</p>
-        <Button secondary to="/sign-in">Already have an account? Click here to sign in.</Button>
-        <Button primary margin="5% 0 0 0" onClick={handleSignUp}>Sign Up</Button>
+        <Button secondary to="/sign-in">{t("acc-sign-in")}</Button>
+        <Button primary margin="5% 0 0 0" onClick={handleSignUp}>{t("sign-up")}</Button>
       </div>
     </div>
   )

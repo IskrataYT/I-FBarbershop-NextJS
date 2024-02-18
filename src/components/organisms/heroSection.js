@@ -5,18 +5,21 @@ import Button from "../atoms/button"
 import Image from "next/image"
 import styles from "./css/heroSection.module.css"
 import Typed from "typed.js"
+import { useTranslation } from "next-i18next"
 
 const HeroSection = () => {
   const [isMobile, setIsMobile] = useState(false)
   const el = useRef(null)
 
+  const { t } = useTranslation("common")
+
   useEffect(() => {
     if (el && el.current) { // Check that the ref is not null
       const typed = new Typed(el.current, {
         strings: [
-          "Cutting Edge Style, Classic Comfort",
-          "Experience the fusion of tradition and innovation",
-          "Your style is our masterpiece",
+          t("text-1"),
+          t("text-2"),
+          t("text-3"),
         ],
         startDelay: 300,
         typeSpeed: 75,
@@ -63,10 +66,10 @@ const HeroSection = () => {
             <Title ref={el} key={isMobile} margin="8% 0 8% 0">
             </Title>
             <Text>
-              Experience the fusion of tradition and innovation at our barbershop. Where every snip is a step towards perfection, and your style is our masterpiece.
+              {t("short-intro")}
             </Text>
             <Button to="/book-an-appointment" margin="40% 0 0 0" primary> 
-              Book Now
+              {t("book-now")}
             </Button>
           </div>
         </div>
@@ -78,10 +81,10 @@ const HeroSection = () => {
             <Title margin="8% 0 8% 0" ref={el} padding="0 5% 0 5%">
             </Title>
             <Text padding="0 5% 0 5%" key={isMobile}>
-              Experience the fusion of tradition and innovation at our barbershop. Where every snip is a step towards perfection, and your style is our masterpiece.
+              {t("short-intro")}
             </Text>
             <Button to="/book-an-appointment" primary margin="15% 0 0 0">
-              Book Now
+              {t("book-now")}
             </Button>
           </div>
         </div>

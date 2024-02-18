@@ -3,8 +3,12 @@ import Footer from "@/components/organisms/footer"
 import styles from "./css/productPage.module.css"
 import Title from "@/components/atoms/title"
 import Text from "@/components/atoms/text"
+import { useTranslation } from "next-i18next"
+
+
 
 export default function ProductPageLayout({product}) {
+  const { t } = useTranslation("common")
   return(
     <div className={"product" + product.id}   style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", minHeight: "100vh", height: "auto"}}>
       <Navbar/>
@@ -16,8 +20,8 @@ export default function ProductPageLayout({product}) {
           <Title>{product.name}</Title>
           <Text>{product.description}</Text>
           <div className={styles.priceContainer}>
-            <p className={styles.price}>{product.price} BGN</p>  
-            <p className={styles.quantity}><em>8 remaining in stock</em></p>
+            <p className={styles.price}>{product.price} {t("bgn")}</p>  
+            <p className={styles.quantity}><em>8 {t("remaining")}</em></p>
           </div>
         </div>
       </div>

@@ -5,6 +5,15 @@ import Footer from "@/components/organisms/footer"
 import ChooseAService from "@/components/organisms/chooseAService"
 import ChooseADateAndTime from "@/components/organisms/chooseADate&Time"
 import SuccessScreen from "@/components/organisms/successScreen"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
+
+export async function getServerSideProps({ locale }) {
+  return {
+    props: {
+      ...await serverSideTranslations(locale, ["common"]), // Use 'common' namespace
+    },
+  }
+}
 
 const initialState = { step: 1, bookingDetails: {} }
 

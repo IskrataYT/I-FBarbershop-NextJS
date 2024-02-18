@@ -1,21 +1,23 @@
 import Button from "./button"
 import styles from "../organisms/css/Navbar.module.css"
 import Logo from "./logo"
+import { useTranslation } from "next-i18next"
 
 
 
 export const Menu = ({ isAddMargin, isMobile }) => {
+  const { t } = useTranslation("common")
   return (
     <div className={styles.navbarElement}>
       <Button margin={isAddMargin ? "0 20px 0 0" : ""}  to="/">
-        Home
+        {t("home")}
       </Button>
       <Button
         margin={isAddMargin ? "0 20px 0 0" : ""}
         to="/about"
         navbar={true}
       >
-        About
+        {t("about")}
       </Button>
       {!isMobile && <Logo />}
       <Button
@@ -23,14 +25,14 @@ export const Menu = ({ isAddMargin, isMobile }) => {
         to="/catalogue"
         navbar={true}
       >
-        Catalogue
+        {t("catalogue")}
       </Button>
       <Button
         margin={isAddMargin ? "0 20px 0 0" : ""}
         to="/book-an-appointment"
         navbar={true}
       >
-        Booking
+        {t("booking")}
       </Button>
     </div>
   )

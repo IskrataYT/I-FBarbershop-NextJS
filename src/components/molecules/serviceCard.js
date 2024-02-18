@@ -3,8 +3,10 @@ import React from "react"
 import Styles from "./css/card.module.css"
 import Title from "../atoms/title"
 import Text from "../atoms/text"
+import { useTranslation } from "next-i18next"
 
 const ServiceCard = ({ service, onSelect }) => {
+  const { t } = useTranslation("common")
   const handleClick = () => {
     onSelect(service)
   }
@@ -13,7 +15,7 @@ const ServiceCard = ({ service, onSelect }) => {
     <button className={Styles.container} onClick={handleClick}>
       <Title secondary>{service.title}</Title>
       <div className={Styles.subtitleContainer}>
-        <Text>{service.price} BGN⠀•⠀</Text>
+        <Text>{service.price} {t("bgn")}⠀•⠀</Text>
         <Text>{service.duration}</Text>
       </div>
     </button>
