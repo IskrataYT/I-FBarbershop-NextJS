@@ -13,6 +13,7 @@ async function deleteBooking(date, service, time, language = "bg") {
     await client.connect()
     const db = client.db(dbName)
     const collection = db.collection("bookings")
+    console.log(`Date: ${date}, Service: ${serviceKey}, Time: ${time}`)
 
     // Delete the booking
     const result = await collection.deleteOne({ date, service: serviceKey, time })
