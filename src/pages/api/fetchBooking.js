@@ -28,9 +28,10 @@ export default async function handler(req, res) {
 
       // Extract only the times of the bookings
       const times = bookings.map(booking => booking.time)
+      const services = bookings.map(booking => booking.service)
 
       // Send response
-      res.status(200).json({ message: "Fetched Times successfully", times: times })
+      res.status(200).json({ message: "Fetched Times successfully", times: times, services: services })
     } catch (err) {
       console.log(err.stack)
       res.status(500).json({ message: "An error occurred" })
