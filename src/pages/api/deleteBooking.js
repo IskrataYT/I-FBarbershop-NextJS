@@ -1,10 +1,11 @@
 import { MongoClient } from "mongodb"
 import serviceTranslations from "./models/serviceTranslations"
-
-async function deleteBooking(date, service, time, language = "bg") {
-  const url = process.env.MONGODB_URL
-  const dbName = process.env.DB_NAME
+const deleteBooking = async (req, res) => {
+  const url = "mongodb+srv://root:EHp3wLINM3dPT6x4@db1.yr4dzh4.mongodb.net/?retryWrites=true&w=majority"
+  const dbName = "myproject"  
   const client = new MongoClient(url)
+  const {date, service, time,} = req.body
+  const language = req.body.language || "bg"
 
   // Reverse the translation
   const serviceKey = Object.keys(serviceTranslations[language]).find(key => serviceTranslations[language][key] === service)
@@ -19,12 +20,12 @@ async function deleteBooking(date, service, time, language = "bg") {
     const result = await collection.deleteOne({ date, service: serviceKey, time })
 
     if (result.deletedCount === 1) {
-      console.log("Successfully deleted one document.")
+      res.status(200).json({ message: "Deleted succefully" })
     } else {
-      console.log("No documents matched the query. Deleted 0 documents.")
+      res.status(402).json({ message: "No ducuments found" })
     }
   } catch (err) {
-    console.log(err.stack)
+    res.status(500).json({err})
     throw err
   } finally {
     client.close()
