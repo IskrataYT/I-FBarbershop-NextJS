@@ -16,7 +16,7 @@ async function deleteBooking(date, service, time, language = "bg") {
     console.log(`Date: ${date}, Service: ${serviceKey}, Time: ${time}`)
 
     // Delete the booking
-    const result = await collection.deleteOne({ date, service: serviceKey, time })
+    const result = await collection.deleteOne({ date, serviceKey, time })
 
     if (result.deletedCount === 1) {
       console.log("Successfully deleted one document.")
