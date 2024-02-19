@@ -1,8 +1,8 @@
 import { MongoClient } from "mongodb"
 import serviceTranslations from "./models/serviceTranslations"
 const deleteBooking = async (req, res) => {
-  const url = "mongodb+srv://root:EHp3wLINM3dPT6x4@db1.yr4dzh4.mongodb.net/?retryWrites=true&w=majority"
-  const dbName = "myproject"  
+  const url = process.env.MONGODB_URL
+  const dbName = process.env.DB_NAME  
   const client = new MongoClient(url)
   const {date, service, time,} = req.body
   const language = req.body.language || "bg"
