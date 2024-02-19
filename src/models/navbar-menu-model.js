@@ -13,7 +13,7 @@ export const getRenderedKeysByComponent = (key) => {
   }
 }
 
-export const getComponentByKey = (key, updateShowingKeysFunction) => {
+export const getComponentByKey = (key, updateShowingKeysFunction, userSignedIn) => {
   
   
   switch (key) {
@@ -45,11 +45,27 @@ export const getComponentByKey = (key, updateShowingKeysFunction) => {
       </Button>
     )
   case "account-settings":
-    return (
-      <Button key={key} to="/sign-in">
-        Account settings
-      </Button>
-    )
+    if (userSignedIn == true) {
+      return (
+        <Button
+          key={key}
+          onClick={() => {
+            localStorage.removeItem("token")
+            window.location.reload()
+          }}
+          navbar={true}
+        >
+              Sign Out
+        </Button>
+      )
+    } else {
+      return (
+        <Button key={key} to="/sign-in" navbar={true}>
+              Sign In
+        </Button>
+      )
+    }
+  
 
   default:
     return null
