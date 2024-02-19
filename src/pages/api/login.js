@@ -5,8 +5,8 @@ import jwt from "jsonwebtoken"
 const handleLogin = async (req, res) => {
   if (req.method === "POST") {
     const { phone, password } = req.body
-    const url = "mongodb+srv://root:EHp3wLINM3dPT6x4@db1.yr4dzh4.mongodb.net/?retryWrites=true&w=majority"
-    const dbName = "myproject"
+    const url = process.env.MONGODB_URL
+    const dbName = process.env.DB_NAME
     const client = new MongoClient(url)
 
     try {
@@ -27,7 +27,7 @@ const handleLogin = async (req, res) => {
       }
 
       // Create JWT
-      const secretKey = "your-secret-key" // Replace with your actual secret key
+      const secretKey = process.env.SECRET_KEY // Replace with your actual secret key
       const token = jwt.sign({ id: user._id, username: user.name, phonenumber: user.phone }, secretKey, { expiresIn: "1h" })
 
       // Send JWT in response

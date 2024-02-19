@@ -1,8 +1,8 @@
 const { MongoClient } = require("mongodb")
 
 async function deleteBooking(date, service, time) {
-  const url = "mongodb+srv://root:EHp3wLINM3dPT6x4@db1.yr4dzh4.mongodb.net/?retryWrites=true&w=majority"
-  const dbName = "myproject"
+  const url = process.env.MONGODB_URL
+  const dbName = process.env.DB_NAME
   const client = new MongoClient(url)
 
   try {
@@ -26,4 +26,4 @@ async function deleteBooking(date, service, time) {
   }
 }
 
-module.exports = deleteBooking
+export default deleteBooking

@@ -94,7 +94,7 @@ const SignInForm = () => {
         <p className={styles.errorText}>{phoneText}</p>
         <InputField type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}/>
         <p className={styles.errorText}>{passwordText}</p>
-        <Button secondary  to="sign-up">{t("no-acc-sign-in")}</Button>
+        <Button secondary  to="sign-up">{t("no-acc-sign-up")}</Button>
         <Button primary margin="5% 0 0 0" onClick={handleSignIn}>{t("sign-in")}</Button>
       </div>) : (<div className={styles.formContainer}>
         <Title margin="0 0 15% 0">{t("sign-in")}</Title>

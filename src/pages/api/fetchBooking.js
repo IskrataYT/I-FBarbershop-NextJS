@@ -1,14 +1,16 @@
 import { MongoClient } from "mongodb"
+import serviceTranslations from "./models/serviceTranslations"
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
-    const { date } = req.body
+    const { date, fromApp } = req.body
+    const language = req.body.language || "bg"
 
     // Connection URL
-    const url = "mongodb+srv://root:EHp3wLINM3dPT6x4@db1.yr4dzh4.mongodb.net/?retryWrites=true&w=majority"
+    const url = process.env.MONGODB_URL
 
     // Database Name
-    const dbName = "myproject"
+    const dbName = process.env.DB_NAME
 
     // Create a new MongoClient
     const client = new MongoClient(url)
@@ -28,7 +30,10 @@ export default async function handler(req, res) {
 
       // Extract only the times of the bookings
       const times = bookings.map(booking => booking.time)
-      const services = bookings.map(booking => booking.service)
+      let services = []
+      if (fromApp) {
+        services = bookings.map(booking => serviceTranslations[language][booking.service])
+      }
 
       // Send response
       res.status(200).json({ message: "Fetched Times successfully", times: times, services: services })
@@ -44,3 +49,5 @@ export default async function handler(req, res) {
     res.status(405).json({ message: "Method not allowed" })
   }
 }
+
+

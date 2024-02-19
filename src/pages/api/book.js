@@ -5,10 +5,10 @@ export default async function handler(req, res) {
     const { phone, name, time, service, date } = req.body
 
     // Connection URL
-    const url = "mongodb+srv://root:EHp3wLINM3dPT6x4@db1.yr4dzh4.mongodb.net/?retryWrites=true&w=majority"
+    const url = process.env.MONGODB_URL
 
     // Database Name
-    const dbName = "myproject"
+    const dbName = process.env.DB_NAME
 
     // Create a new MongoClient
     const client = new MongoClient(url)
@@ -48,3 +48,4 @@ export default async function handler(req, res) {
     res.status(405).json({ message: "Method not allowed" })
   }
 }
+
