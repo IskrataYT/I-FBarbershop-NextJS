@@ -2,7 +2,7 @@
 module.exports = {
   i18n: {
     locales: ["en", "bg"],
-    defaultLocale: "en",
+    defaultLocale: "bg",
     localeDetection: false, // Disable automatic locale detection if it's causing issues
   },
   react: {

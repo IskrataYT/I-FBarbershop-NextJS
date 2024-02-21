@@ -31,16 +31,16 @@ const SignUpForm = () => {
     setConfirmPasswordText("")
 
     if (!name) {
-      setNameText("Please fill out this field")
+      setNameText(t("fill-field"))
     }
     if (!phone) {
-      setPhoneText("Please fill out this field")
+      setPhoneText(t("fill-field"))
     }
     if (!password) {
-      setPasswordText("Please fill out this field")
+      setPasswordText(t("fill-field"))
     }
     if (!confirmPassword) {
-      setConfirmPasswordText("Please fill out this field")
+      setConfirmPasswordText(t("fill-field"))
     }
     if (!name || !phone || !password || !confirmPassword) {
       return
@@ -48,18 +48,18 @@ const SignUpForm = () => {
     
   
     if (!validatePhoneNumber(phone)) {
-      setPhoneText("This is not a phone number")
+      setPhoneText(t("not-a-phone"))
       return
     }
   
     if (password.length < 8) {
-      setPasswordText("Password must be at least 8 characters long")
+      setPasswordText(t("pwd-too-short"))
       return
     }
   
     if (password !== confirmPassword) {
-      setPasswordText("Passwords do not match")
-      setConfirmPasswordText("Passwords do not match")
+      setPasswordText(t("pwd-no-match"))
+      setConfirmPasswordText(t("pwd-no-match"))
       return
     }
   
@@ -82,6 +82,8 @@ const SignUpForm = () => {
       localStorage.setItem("token", data.token)
       router.push("/")
     } else {
+      if(data.message == "A user with this phone number already exists"){
+        setPhoneText(t("common:phone-exists"))}
       console.log("Registration failed")
     }
   }
@@ -90,13 +92,13 @@ const SignUpForm = () => {
     <div className={styles.formBody}>
       <div className={styles.formContainer}>
         <Title margin="0 0 15% 0">{t("sign-up")}</Title>
-        <InputField type="names" placeholder="Name" margin="0 0 10% 0" value={name} onChange={e => setName(e.target.value)}/>
+        <InputField type="names" placeholder={t("name")} value={name} onChange={e => setName(e.target.value)}/>
         <p className={styles.errorText}>{nameText}</p>
-        <InputField type="text" placeholder="Phone Number" margin="0 0 10% 0" value={phone} onChange={e => setPhone(e.target.value)}/>
+        <InputField type="text" placeholder={t("phone")}  value={phone} onChange={e => setPhone(e.target.value)}/>
         <p className={styles.errorText}>{phoneText}</p>
-        <InputField type="password" placeholder="Password" margin="0 0 10% 0" value={password} onChange={e => setPassword(e.target.value)}/>
+        <InputField type="password" placeholder={t("pwd")}  value={password} onChange={e => setPassword(e.target.value)}/>
         <p className={styles.errorText}>{passwordText}</p>
-        <InputField type="password" placeholder="Confirm Password" margin="0 0 10% 0" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}/>
+        <InputField type="password" placeholder={t("confirm-pwd")}  value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}/>
         <p className={styles.errorText}>{confirmPasswordText}</p>
         <Button secondary to="/sign-in">{t("acc-sign-in")}</Button>
         <Button primary margin="5% 0 0 0" onClick={handleSignUp}>{t("sign-up")}</Button>
@@ -105,4 +107,4 @@ const SignUpForm = () => {
   )
 }
 
-export default SignUpForm
+export default SignUpForm 

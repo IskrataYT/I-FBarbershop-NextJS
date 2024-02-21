@@ -25,18 +25,22 @@ const SignInForm = () => {
 
   const handleSignIn = async () => {
     if (!phone) {
-      setPhoneText("Please fill out this field")
+      setPhoneText(t("fill-field"))
       if(!password){
-        setPasswordText("Please fill out this field")
+        setPasswordText(t("fill-field"))
       }
     } else {
       if(!password){
-        setPasswordText("Please fill out this field")
+        setPasswordText(t("fill-field"))
       } 
+    }
+
+    if(!phone || !password){
+      return
     }
   
     if (!validatePhoneNumber(phone)) {
-      setPhoneText("This is not a phone number")
+      setPhoneText(t("not-a-phone"))
       return
     }
   
@@ -64,10 +68,10 @@ const SignInForm = () => {
       }
     } else {
       if(data.message == "Invalid Phone number"){
-        setPhoneText("Incorrect Phone Number")
+        setPhoneText(t("wrong-phone"))
       } else {
         if(data.message == "Invalid password") {
-          setPasswordText("Incorrect Password")
+          setPasswordText(t("pwd-wrong"))
         }
       }
     }
@@ -90,17 +94,17 @@ const SignInForm = () => {
       {redirected ? (<div className={styles.formContainer}>
         <Title margin="0 0 15% 0">{t("sign-in")}</Title>
         {showText && <p className={styles.message}>{t("please-sign-in")}</p>}
-        <InputField type="text" placeholder="Phone Number" value={phone} onChange={e => setPhone(e.target.value)}/>
+        <InputField type="text" placeholder={t("phone")} value={phone} onChange={e => setPhone(e.target.value)}/>
         <p className={styles.errorText}>{phoneText}</p>
-        <InputField type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}/>
+        <InputField type="password" placeholder={t("pwd")} value={password} onChange={e => setPassword(e.target.value)}/>
         <p className={styles.errorText}>{passwordText}</p>
         <Button secondary  to="sign-up">{t("no-acc-sign-up")}</Button>
         <Button primary margin="5% 0 0 0" onClick={handleSignIn}>{t("sign-in")}</Button>
       </div>) : (<div className={styles.formContainer}>
         <Title margin="0 0 15% 0">{t("sign-in")}</Title>
-        <InputField type="text" placeholder="Phone Number" value={phone} onChange={e => setPhone(e.target.value)}/>
+        <InputField type="text" placeholder={t("phone")} value={phone} onChange={e => setPhone(e.target.value)}/>
         <p className={styles.errorText}>{phoneText}</p>
-        <InputField type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}/>
+        <InputField type="password" placeholder={t("pwd")} value={password} onChange={e => setPassword(e.target.value)}/>
         <p className={styles.errorText}>{passwordText}</p>
         <Button secondary  to="sign-up">{t("no-acc-sign-up")}</Button>
         <Button primary margin="5% 0 0 0" onClick={handleSignIn} >{t("sign-in")}</Button>

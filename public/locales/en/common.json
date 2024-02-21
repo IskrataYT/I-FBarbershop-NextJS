@@ -52,5 +52,16 @@
     "all-rights": "© I&F barbershop. All rights reserved.",
     "text-1": "Cutting Edge Style, Classic Comfort",
     "text-2": "Experience the fusion of tradition and innovation",
-    "text-3": "Your style is our masterpiece"
+    "pwd-no-match": "Passwords do not match",
+    "pwd-too-short": "Password must be at least 8 characters long",
+    "phone-exists": "An account with this phone number already exists",
+    "pwd-wrong": "Wrong password",
+    "not-a-phone": "Invalid phone number",
+    "wrong-phone": "This phone number doesn't exist",
+    "fill-field": "Please fill out this field",
+      "pwd": "Password",
+      "confirm-pwd": "Confirm password",
+      "phone": "Phone number",
+      "name": "Name",
+      "language": "Language"
   }

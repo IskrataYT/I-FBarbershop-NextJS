@@ -14,6 +14,13 @@ const handleRegister = async (req, res) => {
       console.log("Connected successfully to server")
       const db = client.db(dbName)
       const collection = db.collection("users")
+
+      // Check if a user with the provided phone number already exists
+      const existingUser = await collection.findOne({ phone })
+      if (existingUser) {
+        return res.status(400).json({ message: "A user with this phone number already exists" })
+      }
+
       const saltRounds = 10
       const hashedPassword = await bcrypt.hash(password, saltRounds)
       const result = await collection.insertOne({ name, phone, password: hashedPassword })
@@ -38,6 +45,7 @@ const handleRegister = async (req, res) => {
 }
 
 export default handleRegister
+
 
 
   

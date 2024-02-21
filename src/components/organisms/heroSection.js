@@ -35,7 +35,7 @@ const HeroSection = () => {
         typed.destroy()
       }
     }
-  }, [isMobile]) // Empty dependency array ensures the effect runs after the component mounts
+  }, [isMobile,   t]) // Empty dependency array ensures the effect runs after the component mounts
     
 
   useEffect(() => {

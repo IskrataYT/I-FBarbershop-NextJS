@@ -1,4 +1,3 @@
-// Navbar.js
 import React, { useState, useEffect } from "react"
 import Button from "../atoms/button"
 import styles from "./css/Navbar.module.css"
@@ -8,24 +7,9 @@ import {
   FaBars,
 } from "react-icons/fa6"
 import Dropdown from "../molecules/dropdown"
-import {
-  getComponentByKey,
-  getRenderedKeysByComponent,
-} from "@/models/navbar-menu-model"
+import { getRenderedKeysByComponent, getComponentByKey } from "@/models/navbar-menu-model"
 import { Menu } from "../atoms/Menu"
-
-
-/**
- * Компонентите макс 60 линии
- * Компонентите, които рендерират JSX (HTML) трябва да са кръстени с главна буква
- * Без да се повтаря код. Ако има нещо, което се повтаря да се изнесе в компонент или отделна функция и да се използва където е необходимо
- * Да се ползват .jsx и .js екстеншъни за файловете (.jsx е за компоненти, .js е за всичко останало)
- * Куките като useEffect и useState трябва да са винаги най отгоре в компонента
- * Евент лисънърите не трябва да се ползват. Ако все пак се налага да се правят useEffect и да се чистят в ретърн на useEffect
- * Без JSX в useState 
- */
-
-
+import { useTranslation } from "next-i18next"
 
 const Navbar = () => {
   const [isMobile, setIsMobile] = useState(false)
@@ -36,10 +20,10 @@ const Navbar = () => {
     "language",
   ])
   const [userSignedIn, setUserSignedIn] = useState(false)
+  const { t } = useTranslation("common")
 
   useEffect(() => {
     // This runs when the component mounts and updates `isMobile`
-    // ... existing code ...
     const token = localStorage.getItem("token")
     // Fetch the user's logged-in status
     fetch("/api/user", {
@@ -82,7 +66,7 @@ const Navbar = () => {
           <div className={styles.navbarElement}>
             <Dropdown clickable title={<FaUser />}>
               {renderedKeys.map((key) =>
-                getComponentByKey(key, () =>
+                getComponentByKey(key, t, () =>
                   setRenderedKeys(getRenderedKeysByComponent(key)), userSignedIn
                 )
               )}
@@ -100,7 +84,7 @@ const Navbar = () => {
           <div className={styles.navbarElement}>
             <Dropdown clickable title={<FaUser />}>
               {renderedKeys.map((key) =>
-                getComponentByKey(key, () =>
+                getComponentByKey(key, t, () =>
                   setRenderedKeys(getRenderedKeysByComponent(key)), userSignedIn
                 )
               )}

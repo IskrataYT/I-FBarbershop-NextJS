@@ -13,9 +13,7 @@ export const getRenderedKeysByComponent = (key) => {
   }
 }
 
-export const getComponentByKey = (key, updateShowingKeysFunction, userSignedIn) => {
-  
-  
+export const getComponentByKey = (key, t, updateShowingKeysFunction, userSignedIn) => {
   switch (key) {
   case "left-arrow":
     return (
@@ -41,7 +39,7 @@ export const getComponentByKey = (key, updateShowingKeysFunction, userSignedIn) 
         onClick={() => updateShowingKeysFunction()}
         navbar={true}
       >
-        Language <FaArrowRight />
+        {t("language")} <FaArrowRight />
       </Button>
     )
   case "account-settings":
@@ -55,13 +53,13 @@ export const getComponentByKey = (key, updateShowingKeysFunction, userSignedIn) 
           }}
           navbar={true}
         >
-              Sign Out
+          {t("sign-out")}
         </Button>
       )
     } else {
       return (
         <Button key={key} to="/sign-in" navbar={true}>
-              Sign In
+          {t("sign-in")}
         </Button>
       )
     }
