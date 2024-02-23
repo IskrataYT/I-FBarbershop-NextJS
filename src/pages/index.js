@@ -21,7 +21,7 @@ export default function Home() {
       <NextSeo title="I&F Barbershop - Home" description="Welcome to I&F Barbershop. Visit our Home page to learn about our exceptional grooming services, explore our product catalogue, book an appointment, and more. Experience the perfect blend of tradition and trend today." />
       <Navbar/>
       <HeroSection/>
-      <Introduction title={t("about-us")} hasButton>{t("intro")}</Introduction>
+      <Introduction title={t("about-us")} hasButton imgUrl="/barbershop.jpg">{t("intro")}</Introduction>
       <Footer/>
 
     </div>
