@@ -6,6 +6,7 @@ import ChooseAService from "@/components/organisms/chooseAService"
 import ChooseADateAndTime from "@/components/organisms/chooseADate&Time"
 import SuccessScreen from "@/components/organisms/successScreen"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
+import { NextSeo } from "next-seo"
 
 export async function getServerSideProps({ locale }) {
   return {
@@ -111,6 +112,7 @@ export default function Booking() {
 
   return(
     <div className="BookingPage"  style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100vh"}}>
+      <NextSeo title="I&F Barbershop - Booking" description="Secure your spot at I&F Barbershop through our Booking page. Schedule your next grooming session with our skilled barbers and experience a haircut that truly suits your style." />
       <Navbar/>
       {sessionExists ? (
         <>

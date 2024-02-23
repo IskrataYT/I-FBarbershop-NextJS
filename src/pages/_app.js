@@ -5,6 +5,7 @@ import { useEffect } from "react"
 import { appWithTranslation } from "next-i18next"
 import "../../i18n" // Your i18n configuration file
 
+
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
     // Ensure i18n is initialized on the client side
