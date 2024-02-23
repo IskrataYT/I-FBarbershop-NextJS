@@ -7,11 +7,11 @@ const AboutPage = () => {
   const { t } = useTranslation("common")
   return(
     <div className={styles.aboutContainer}>
-      <Introduction title={t("welcome-short")}>{t("welcome")}</Introduction>
-      <Introduction isLeft title={t("our-story")}>{t("story")}</Introduction>
-      <Introduction title={t("our-services")}>{t("services")}</Introduction>
-      <Introduction isLeft title={t("our-commitment")}>{t("commitment")}</Introduction>
-      <Introduction title={t("join")}>{t("join-us")}</Introduction>
+      <Introduction title={t("welcome-short")} imgUrl="/barbershop.jpg">{t("welcome")}</Introduction>
+      <Introduction isLeft title={t("our-story")} imgUrl="/about1.jpg">{t("story")}</Introduction>
+      <Introduction title={t("our-services")} imgUrl="/about2.jpg">{t("services")}</Introduction>
+      <Introduction isLeft title={t("our-commitment")} imgUrl="/about3.jpg">{t("commitment")}</Introduction>
+      <Introduction title={t("join")} imgUrl="/about4.jpg">{t("join-us")}</Introduction>
       <Contact />
       
     </div>

@@ -4,7 +4,7 @@ import Title from "../atoms/title"
 import Button from "../atoms/button"
 import { useTranslation } from "next-i18next"
 
-const Introduction = ({isLeft, children, title, hasButton}) => {
+const Introduction = ({isLeft, children, title, hasButton, imgUrl}) => {
   const { t } = useTranslation("common")
   return (
     <div className={`${styles.introductionContainer} ${isLeft ? styles.reverse : ""}`}>
@@ -16,7 +16,7 @@ const Introduction = ({isLeft, children, title, hasButton}) => {
         {hasButton && <Button margin="25% 4% 4% 4%" primary to="/about">{t("learn-more")}</Button>}
       </div>
       <div className={styles.imageSection}>
-        <img alt="Image of a barbershop" src="/barbershop.jpg" width="100%"/>
+        <img alt="Image of a barbershop" src={imgUrl} width="100%"/>
       </div>
     </div>
   )
