@@ -17,7 +17,7 @@
     "analytics": "^0.8.11",
     "axios": "^1.6.7",
     "bcrpyt": "^2.0.0",
-    "bcrypt": "^5.1.1",
+    "bcrypt": "^6.0.0",
     "classnames": "^2.5.1",
     "cookies": "^0.9.1",
     "date-fns": "^3.3.1",
